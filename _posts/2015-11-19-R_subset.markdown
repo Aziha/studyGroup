@@ -1,0 +1,11 @@
+---
+title: Subsetting in R
+text: Learn different ways to subset data in R
+location: Billiard Room, Staff Club
+link: https://github.com/smilefreak/studyGroup/issues/45 
+date: 2015-11-19
+startTime: '15:30'
+endTime: '16:30'
+
+---
+
