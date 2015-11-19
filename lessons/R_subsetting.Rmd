@@ -1,0 +1,163 @@
+---
+title : "R Subsetting"
+date : "19 November 2015"
+author : "Murray Cadzow"
+output : html_document
+---
+
+
+
+In this lesson we will cover subsetting your data using:
+
+- logical operations
+
+- subset()
+
+- square brackets
+
+- intro dplyr
+
+## Logical operations
+
+Before we can subset we need to know how to create the conditions for R to know what to select
+
+We do this through logical comparisions
+
+The logical operators as mentioned before are:
+
+- == ( equality  )
+
+- != ( not equal )
+
+- \> (greater than)
+
+- \>= (greater than or equal to)
+
+- < (less than)
+
+- <= (less than or equal to)
+
+- ! (not)
+
+- \| (or)
+
+- & (and)
+
+The result of using these logical comparisons is a vector of **TRUE**s and **FALSE**s
+
+Here are some examples:
+```{r, eval = TRUE, echo = TRUE}
+data("iris")
+iris$Sepal.Length
+iris$Sepal.Length < 5
+
+# using not
+!TRUE
+!FALSE
+!( iris$Sepal.Length < 5)
+
+# equality
+TRUE == TRUE
+TRUE == FALSE
+FALSE == FALSE
+iris$Sepal.Length == 5
+
+# not equality
+TRUE != TRUE
+TRUE != FALSE
+FALSE != FALSE
+iris$Sepal.Length != 5
+
+# combine conditions or ( | )
+TRUE | TRUE
+TRUE | FALSE
+FALSE | FALSE
+iris$Sepal.Length > 5 | iris$Sepal.Length < 5
+
+#combine conditions and ( & )
+TRUE & TRUE
+TRUE & FALSE
+FALSE & FALSE
+iris$Sepal.Length > 5 & iris$Petal.Width < 1.3
+
+# different types
+3 < 'a'
+```
+
+**NOTE** comparisons will be performed on the "lowest common data type" which is usually _character_ when different types are involved
+
+## _Subset()_
+
+The subset function provides a easy way to subset your data into groups based on your logical conditions
+
+We'll use the dummy data for these examples
+
+```{r, echo = TRUE, eval = TRUE}
+data("iris")
+
+# what does it look like?
+dim(iris)
+head(iris)
+
+# select Sepal lengths under 5
+under5 <- subset(x = iris, iris$Sepal.Length < 5)
+
+# how many people do we now have?
+dim(under5)
+
+# from our original data how many people are male (SEX == 1) and have gout (GOUTAFFSTAT == 2)
+setosaSepalLengthOver5 <- subset(x = iris, Species == 'setosa' & Sepal.Length > 5)
+dim(setosaSepalLengthOver5)
+
+```
+
+### Subset with square brackets
+
+Just as we can use square brackets and indices to select items we want, instead of indices we can provide a logical condition
+
+
+```{r, echo = TRUE, eval = TRUE}
+# repeat under 5 selection
+# here we're saying we want all the columns but select the rows where the condition is met
+under5_repeat <- iris[iris$Sepal.Length < 5 , ]
+dim(under5_repeat)
+
+```
+
+
+### Intro to dplyr
+
+Made to make data manipulation easy
+
+Uses verb functions to make thoughts -> code easier
+
+We'll focus on the subsetting functions to start with
+
+```{r, eval=TRUE, echo = TRUE}
+library('dplyr')
+
+# filter rows with filter()
+head( filter(iris, Sepal.Length < 5) )
+
+# or slice()
+slice(iris, 1:10)
+
+# select columns with select()
+head( select(iris, Sepal.Length, Species) )
+
+```
+
+Pipe %>%
+
+Instead of wrapping functions with dplyr you can pipe the output of a function into the input of another
+
+```{r, eval = TRUE, echo = TRUE}
+iris %>% select(Sepal.Length) %>% head()
+```
+
+We can also create summaries and group data
+```{r, eval = TRUE, echo = TRUE}
+iris %>% summarise(mean(Sepal.Length))
+
+iris %>% group_by(Species) %>% summarise(mean(Sepal.Length))
+```
