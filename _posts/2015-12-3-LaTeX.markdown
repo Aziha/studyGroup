@@ -2,7 +2,7 @@
 title: Introduction to NeSI
 text: Learn about NeSI, high performance computing, and R in parallel.
 location: Billiard Room, Staff Club
-link: https://github.com/smilefreak/studyGroup/issues/42 
+link: https://github.com/smilefreak/studyGroup/issues/48
 date: 2015-12-3
 startTime: '15:30'
 endTime: '16:30'
