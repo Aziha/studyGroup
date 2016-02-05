@@ -1,0 +1,11 @@
+---
+title: Kickoff 2016
+text: A time to bring along and work on your own code and discuss/help with others
+location: Rm 231 Dept of Biochemistry
+link: https://github.com/smilefreak/studyGroup/issues/50 
+date: 2016-02-18
+startTime: '15:30'
+endTime: '16:30'
+
+---
+
