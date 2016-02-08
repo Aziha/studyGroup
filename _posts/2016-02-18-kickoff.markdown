@@ -1,6 +1,6 @@
 ---
 title: Kickoff 2016
-text: A time to bring along and work on your own code and discuss/help with others
+text: The first meeting for 2016 where we'll be planning for year including future times and locations.
 location: Rm 231 Dept of Biochemistry
 link: https://github.com/smilefreak/studyGroup/issues/50 
 date: 2016-02-18
